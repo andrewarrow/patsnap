@@ -12,9 +12,9 @@ func main() {
 	tokens := strings.Split(cols, ",")
 	acols := []string{}
 	for _, t := range tokens {
-		acols = append(acols, t)
+		acols = append(acols, "\\\""+t+"\\\"")
 	}
-	collist := fmt.Sprintf("%v", acols)
+	collist := "\"[" + strings.Join(acols, ",") + "]\""
 	fmt.Println(collist)
 	query := url.QueryEscape(os.Args[2])
 	from := time.Now().Unix() * 1000
