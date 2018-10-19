@@ -1,11 +1,9 @@
 # patsnap
-Dog!
 
-#https://app.datadoghq.com/api/v1/logs-queries/scopes/7156/list-csv?query=
+patsnap 'msg,time,my_field1,my_field2' '@my_field1:10 @msg:*something*'
 
-{"list":{"time":{"offset":-7200000,"from":"now-604800s","to":"now"},
-         "search":{"query":"@thing:866 AND @otherthing:foo"},
-         "columns":[{"field":{"path":"@bar"}},
-                    {"field":{"path":"@msg"}}],
-         "limit":5000,
-         "sort":{"time":{"order":"desc"}}}}
+will make a url like:
+
+https://app.datadoghq.com/logs?cols=%5B%22log_msg%22%2C%22log_time%22%2C%22log_my_field1%22%2C%22log_my_field2%22%5D&event&from_ts=1539980475000&index=main*live=true&query=%40my_field1%3A10+%40msg%3A%2Asomething%2A&stream_sort=desc&to_ts=1539981375000
+
+
